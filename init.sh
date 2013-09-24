@@ -11,24 +11,11 @@ SRC_DIR=./installs
 SUPPORT_DIR=./support
 PRJ_DIR=./projects/brms-customer-evaluation-demo
 EAP=jboss-eap-6.1.0.zip
-BPMS=jboss-bpms-6.0.0-redhat-3-deployable.zip
+BPMS=jboss-bpms-6.0.0-redhat-3-eap6.zip
 VERSION=6.0.0.Beta
-#MAVENIZE_VERSION=5.3.1.BRMS
 
 # wipe screen.
 clear 
-
-##
-# Installation mavanization functions.
-##
-#installPom() {
-#		mvn -q install:install-file -Dfile=../support/$2-$MAVENIZE_VERSION.pom.xml -DgroupId=$1 -DartifactId=$2 -Dversion=$MAVENIZE_VERSION -Dpackaging=pom;
-#}
-#
-#	installBinary() {
-#			unzip -q $2-$MAVENIZE_VERSION.jar META-INF/maven/$1/$2/pom.xml;
-#			mvn -q install:install-file -DpomFile=./META-INF/maven/$1/$2/pom.xml -Dfile=$2-$MAVENIZE_VERSION.jar -DgroupId=$1 -DartifactId=$2 -Dversion=$MAVENIZE_VERSION -Dpackaging=jar;
-#}
 
 echo
 echo "#################################################################"
@@ -97,22 +84,7 @@ fi
 # Unzip the required files from JBoss product deployable.
 echo Unpacking $PRODUCT $VERSION...
 echo
-unzip -q $SRC_DIR/$BPMS
-
-echo Installing $PRODUCT Manager components, business-central and dashbuilder WARs...
-echo
-unzip -q -d $SERVER_DIR jboss-bpms-manager.zip
-rm jboss-bpms-manager.zip 
-
-#echo "  - deploying $PRODUCT Engine..."
-#echo
-#unzip -q -d $JBOSS_HOME/standalone/lib/ext jboss-bpms-engine.zip
-rm jboss-bpms-engine.zip
-
-echo "  - adding BPM Suite modules..."
-echo
-cp $SUPPORT_DIR/layers.conf  $JBOSS_HOME/modules
-unzip -q -d $JBOSS_HOME/modules/system/layers $SUPPORT_DIR/layers-bpms.zip
+unzip -q -o -d target $SRC_DIR/$BPMS
 
 echo "  - enabling demo accounts logins in application-users.properties file..."
 echo
@@ -122,27 +94,14 @@ echo "  - enabling demo accounts role setup in application-roles.properties file
 echo
 cp $SUPPORT_DIR/application-roles.properties $SERVER_CONF
 
-echo "  - configuring product.conf..."
-echo
-cp $SUPPORT_DIR/product.conf $SERVER_BIN
-
-echo "  - configuring standalone.xml files..."
+echo "  - configuring standalone.xml file..."
 echo
 cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
-cp $SUPPORT_DIR/standalone-osgi.xml $SERVER_CONF
-cp $SUPPORT_DIR/standalone-full.xml $SERVER_CONF
-cp $SUPPORT_DIR/standalone-full-ha.xml $SERVER_CONF
-cp $SUPPORT_DIR/standalone-ha.xml $SERVER_CONF
 
 # Add execute permissions to the standalone.sh script.
 echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
-
-echo "  - adding dodeploy files..."
-echo
-touch ${SERVER_DIR}business-central.war.dodeploy
-touch ${SERVER_DIR}dashbuilder.war.dodeploy
 
 echo "You can now start the $PRODUCT with ${SERVER_BIN}standalone.sh"
 echo
