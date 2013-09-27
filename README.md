@@ -1,5 +1,5 @@
-JBoss BPM Customer Evaluation Demo Quickstart Guide
-===================================================
+JBoss BPM Suite Customer Evaluation Demo
+========================================
 
 Demo based on JBoss BPM Suite product.
 
