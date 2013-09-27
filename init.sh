@@ -9,7 +9,7 @@ SERVER_CONF=$JBOSS_HOME/standalone/configuration/
 SERVER_BIN=$JBOSS_HOME/bin/
 SRC_DIR=./installs
 SUPPORT_DIR=./support
-PRJ_DIR=./projects/brms-customer-evaluation-demo
+PRJ_DIR=./projects/customer-evaluation-demo
 EAP=jboss-eap-6.1.0.zip
 BPMS=jboss-bpms-6.0.0-redhat-3-eap6.zip
 VERSION=6.0.0.Beta
@@ -45,7 +45,7 @@ if [[ -r $SRC_DIR/$EAP || -L $SRC_DIR/$EAP ]]; then
 		echo EAP sources are present...
 		echo
 else
-		echo Need to download $EAP package from the Customer Support Portal 
+		echo Need to download $EAP package from the Customer Portal 
 		echo and place it in the $SRC_DIR directory to proceed...
 		echo
 		exit
