@@ -18,24 +18,24 @@ VERSION=6.0.0.Beta
 clear 
 
 echo
-echo "#################################################################"
-echo "##                                                             ##"   
-echo "##  Setting up the ${DEMO}                               ##"
-echo "##                                                             ##"   
-echo "##                                                             ##"   
-echo "##     ####  ####   #   #      ### #   # ##### ##### #####     ##"
-echo "##     #   # #   # # # # #    #    #   #   #     #   #         ##"
-echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###       ##"
-echo "##     #   # #     #     #       # #   #   #     #   #         ##"
-echo "##     ####  #     #     #    ###  ##### #####   #   #####     ##"
-echo "##                                                             ##"   
-echo "##                                                             ##"   
-echo "##  brought to you by,                                         ##"   
-echo "##             ${AUTHORS}               ##"
-echo "##                                                             ##"   
-echo "##  ${PROJECT}            ##"
-echo "##                                                             ##"   
-echo "#################################################################"
+echo "##################################################################"
+echo "##                                                              ##"   
+echo "##  Setting up the ${DEMO}                     ##"
+echo "##                                                              ##"   
+echo "##                                                              ##"   
+echo "##     ####  ####   #   #      ### #   # ##### ##### #####      ##"
+echo "##     #   # #   # # # # #    #    #   #   #     #   #          ##"
+echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###        ##"
+echo "##     #   # #     #     #       # #   #   #     #   #          ##"
+echo "##     ####  #     #     #    ###  ##### #####   #   #####      ##"
+echo "##                                                              ##"   
+echo "##                                                              ##"   
+echo "##  brought to you by,                                          ##"   
+echo "##             ${AUTHORS}                                 ##"
+echo "##                                                              ##"   
+echo "##  ${PROJECT}  ##"
+echo "##                                                              ##"   
+echo "##################################################################"
 echo
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
@@ -101,10 +101,6 @@ cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
 echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
-
-echo "Deploying web service that pulls out credit report of customer based on SSN..."
-echo
-cp $SUPPORT_DIR/$WEBSERVICE $SERVER_DIR
 
 echo "You can now start the $PRODUCT with $SERVER_BIN/standalone.sh"
 echo
