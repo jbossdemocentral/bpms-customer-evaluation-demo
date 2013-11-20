@@ -2,23 +2,22 @@ package org.jbpm.evaluation.customer;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-import org.jbpm.process.instance.event.DefaultSignalManagerFactory;
-import org.jbpm.process.instance.impl.DefaultProcessInstanceManagerFactory;
-import org.jbpm.runtime.manager.impl.RuntimeEnvironmentBuilder;
-import org.jbpm.test.JbpmJUnitTestCase;
+import org.jbpm.test.JbpmJUnitBaseTestCase;
+import org.jbpm.workflow.instance.WorkflowProcessInstance;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
-import org.kie.api.runtime.manager.RuntimeManager;
 import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.internal.runtime.manager.RuntimeManagerFactory;
-import org.kie.internal.runtime.manager.context.EmptyContext;
+import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
 
 /**
  * This is a sample file to launch a process.
  */
-public class CustomerEvaluationTest extends JbpmJUnitTestCase {
+public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 
 	private static Integer underAged    = 11;
 	private static Integer adultAged    = 25;
@@ -26,21 +25,23 @@ public class CustomerEvaluationTest extends JbpmJUnitTestCase {
 	private static Integer poorCutomer  = 2;
 	private static RuntimeEngine runtime;
 	
+	@Before
+	public void setUp() {
+		Map<String, ResourceType> resources = new HashMap<String, ResourceType>();
+		resources.put("customereval.bpmn2", ResourceType.BPMN2);
+		resources.put("financerules.drl", ResourceType.DRL);
+		
+		createRuntimeManager(Strategy.SINGLETON, resources);
+		runtime = getRuntimeEngine(ProcessInstanceIdContext.get());
+	}
 	
-	private RuntimeEngine newRuntime(String... processes) throws Exception {
-		RuntimeEnvironmentBuilder builder = RuntimeEnvironmentBuilder.getEmpty()
-				.addConfiguration("drools.processSignalManagerFactory", DefaultSignalManagerFactory.class.getName())
-				.addConfiguration("drools.processInstanceManagerFactory", DefaultProcessInstanceManagerFactory.class.getName());
-
-		RuntimeManager manager = RuntimeManagerFactory.Factory.get().newSingletonRuntimeManager(builder.get(), "Singleton " + UUID.randomUUID().toString());
-		RuntimeEngine runtime = manager.getRuntimeEngine(EmptyContext.get());
-
-		return runtime;
+	@After
+	public void tearDown() {
+		disposeRuntimeManager();
 	}
 	
 	@Test
 	public void underagedCustomerEvaluationTest() {
-
 		// setup of a Person and Request.
 		Person underagedEval = getUnderagedCustomer();
 		Request richEval = getRichCustomer();
@@ -50,131 +51,113 @@ public class CustomerEvaluationTest extends JbpmJUnitTestCase {
 		params.put("person", underagedEval);
 		params.put("request", richEval);
 
-		RuntimeEngine runtime;
-		try {
-			runtime = newRuntime("customereval.bpmn2");
+		// Fire it up!
+		System.out.println("=========================================");
+		System.out.println("= Starting Process Underaged Test Case. =");
+		System.out.println("=========================================");
 
-			// Fire it up!
-			System.out.println("=========================================");
-			System.out.println("= Starting Process Underaged Test Case. =");
-			System.out.println("=========================================");
+		KieSession ksession = runtime.getKieSession();
+		ksession.insert(underagedEval);
+		ProcessInstance pi = ksession.startProcess("org.jbpm.customer-evaluation", params);
+		ksession.fireAllRules();
 
-			runtime.getKieSession().insert(underagedEval);
-			ProcessInstance pi = runtime.getKieSession().startProcess("org.jbpm.customer-evaluation", params);
-			runtime.getKieSession().fireAllRules();
-
-			// Finished.
-			assertProcessInstanceCompleted(pi.getId(), runtime.getKieSession());
-			assertNodeTriggered(pi.getId(), "Underaged");
-
-			runtime.getKieSession().dispose();
-			
-		} catch (Exception e) {
-			System.out.println("UNIT TEST: unable to create a new runtime for the process to run unit test.");
-			e.printStackTrace();
-		}
+		// Finished.
+		assertProcessInstanceCompleted(pi.getId(), ksession);
+		assertNodeTriggered(pi.getId(), "Underaged");
+		ksession.dispose();
 
 		System.out.println("======================================");
 		System.out.println("= Ended Process Underaged Test Case. =");
 		System.out.println("======================================");
-
 	}
-//
-//	@Test
-//	public void adultCustomerEvaluationTest() {
-//
-//		setupTestCase();
-//		
-//		// optional: setup logging.
-//		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationPoorAdult", 1000);
-//	
-//		// setup of a Person and Request.
-//		Person adultEval = getAdultCustomer();
-//		Request poorEval = getPoorCustomer();
-//		ksession.insert(adultEval);
-//
-//		// Map to be passed to the startProcess.
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		params.put("person", adultEval);
-//		params.put("request", poorEval);
-//		
-//		// Fire it up!
-//		System.out.println("==========================================");
-//		System.out.println("= Starting Process Poor Adult Test Case. =");
-//		System.out.println("==========================================");
-//
-//		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
-//		ksession.insert(processInstance);
-//		ksession.fireAllRules();
-//				
-//		// Finished, clean up the logger.
-//		assertProcessInstanceCompleted(processInstance.getId(), ksession);
-//		assertNodeTriggered(processInstance.getId(), "End Poor Customer");
-//		//logger.close();
-//		ksession.dispose();
-//	}
-//
-//	@Test
-//	public void richCustomerEvaluationTest() {
-//
-//		setupTestCase();
-//		
-//		// optional: setup logging.
-//		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationRichAdult", 1000);
-//	
-//		// setup of a Person and Request.
-//		Person adultEval = getAdultCustomer();
-//		Request richEval = getRichCustomer();
-//		ksession.insert(adultEval);
-//
-//		// Map to be passed to the startProcess.
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		params.put("person", adultEval);
-//		params.put("request", richEval);
-//		
-//		// Fire it up!
-//		System.out.println("==========================================");
-//		System.out.println("= Starting Process Rich Adult Test Case. =");
-//		System.out.println("==========================================");
-//		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
-//		ksession.insert(processInstance);
-//		ksession.fireAllRules();
-//				
-//		// Finished, clean up the logger.
-//		assertProcessInstanceCompleted(processInstance.getId(), ksession);
-//		assertNodeTriggered(processInstance.getId(), "End Rich Customer");
-//		//logger.close();
-//		ksession.dispose();
-//	}
-//
-//	
-//	@Test
-//	public void emptyRequestCustomerEvaluationTest() {
-//
-//		setupTestCase();
-//		
-//		// optional: setup logging.
-//		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationEmptyRequest", 1000);
-//	
-//
-//		// Map to be passed to the startProcess is intentionally empty.
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		
-//		// Fire it up!
-//		System.out.println("=============================================");
-//		System.out.println("= Starting Process Empty Request Test Case. =");
-//		System.out.println("=============================================");
-//		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
-//		ksession.insert(processInstance);
-//		ksession.fireAllRules();
-//				
-//		// Finished, clean up the logger.
-//		assertProcessInstanceCompleted(processInstance.getId(), ksession);
-//		assertNodeTriggered(processInstance.getId(), "Underaged");
-//		//logger.close();
-//		ksession.dispose();
-//	}
-//
+
+	@Test
+	public void adultCustomerEvaluationTest() {
+		KieSession ksession = runtime.getKieSession();
+		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationPoorAdult", 1000);
+	
+		// setup of a Person and Request.
+		Person adultEval = getAdultCustomer();
+		Request poorEval = getPoorCustomer();
+		ksession.insert(adultEval);
+
+		// Map to be passed to the startProcess.
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("person", adultEval);
+		params.put("request", poorEval);
+				
+		// Fire it up!
+		System.out.println("==========================================");
+		System.out.println("= Starting Process Poor Adult Test Case. =");
+		System.out.println("==========================================");
+
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+		ksession.insert(processInstance);
+		ksession.fireAllRules();
+						
+		// Finished, clean up the logger.
+		assertProcessInstanceCompleted(processInstance.getId(), ksession);
+		assertNodeTriggered(processInstance.getId(), "End Poor Customer");
+		//logger.close();
+		ksession.dispose();
+	}
+
+	@Test
+	public void richCustomerEvaluationTest() {
+		KieSession ksession = runtime.getKieSession();
+		
+		// optional: setup logging.
+		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationRichAdult", 1000);
+	
+		// setup of a Person and Request.
+		Person adultEval = getAdultCustomer();
+		Request richEval = getRichCustomer();
+		ksession.insert(adultEval);
+
+		// Map to be passed to the startProcess.
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("person", adultEval);
+		params.put("request", richEval);
+		
+		// Fire it up!
+		System.out.println("==========================================");
+		System.out.println("= Starting Process Rich Adult Test Case. =");
+		System.out.println("==========================================");
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+		ksession.insert(processInstance);
+		ksession.fireAllRules();
+				
+		// Finished, clean up the logger.
+		assertProcessInstanceCompleted(processInstance.getId(), ksession);
+		assertNodeTriggered(processInstance.getId(), "End Rich Customer");
+		//logger.close();
+		ksession.dispose();
+	}
+	
+	@Test
+	public void emptyRequestCustomerEvaluationTest() {
+		KieSession ksession = runtime.getKieSession();
+		
+		// optional: setup logging.
+		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationEmptyRequest", 1000);
+
+		// Map to be passed to the startProcess is intentionally empty.
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		// Fire it up!
+		System.out.println("=============================================");
+		System.out.println("= Starting Process Empty Request Test Case. =");
+		System.out.println("=============================================");
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+		ksession.insert(processInstance);
+		ksession.fireAllRules();
+				
+		// Finished, clean up the logger.
+		assertProcessInstanceCompleted(processInstance.getId(), ksession);
+		assertNodeTriggered(processInstance.getId(), "Underaged");
+		//logger.close();
+		ksession.dispose();
+	}
 
 	/**
 	 * Provide an under aged person.
