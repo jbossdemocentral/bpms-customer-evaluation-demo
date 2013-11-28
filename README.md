@@ -1,7 +1,9 @@
 JBoss BPM Suite Customer Evaluation Demo
 ========================================
 
-Demo based on JBoss BPM Suite product.
+![Install Console](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/install-console.png?raw=true)
+
+![Process](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/process.png?raw=true)
 
 
 Quickstart
