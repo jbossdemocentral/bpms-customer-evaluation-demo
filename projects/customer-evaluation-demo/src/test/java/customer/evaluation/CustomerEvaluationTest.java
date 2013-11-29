@@ -1,4 +1,4 @@
-package org.jbpm.evaluation.customer;
+package customer.evaluation;
 
 import java.util.HashMap;
 import java.util.Map;
