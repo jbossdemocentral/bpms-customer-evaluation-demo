@@ -14,6 +14,9 @@ import org.kie.api.runtime.manager.RuntimeEngine;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
 
+import customer.evaluation.Person;
+import customer.evaluation.Request;
+
 /**
  * This is a sample file to launch a process.
  */
@@ -58,7 +61,7 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 
 		KieSession ksession = runtime.getKieSession();
 		ksession.insert(underagedEval);
-		ProcessInstance pi = ksession.startProcess("org.jbpm.customer-evaluation", params);
+		ProcessInstance pi = ksession.startProcess("customer.evaluation", params);
 		ksession.fireAllRules();
 
 		// Finished.
@@ -91,7 +94,7 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 		System.out.println("= Starting Process Poor Adult Test Case. =");
 		System.out.println("==========================================");
 
-		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("customer.evaluation", params);
 		ksession.insert(processInstance);
 		ksession.fireAllRules();
 						
@@ -105,9 +108,6 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 	@Test
 	public void richCustomerEvaluationTest() {
 		KieSession ksession = runtime.getKieSession();
-		
-		// optional: setup logging.
-		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationRichAdult", 1000);
 	
 		// setup of a Person and Request.
 		Person adultEval = getAdultCustomer();
@@ -123,7 +123,8 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 		System.out.println("==========================================");
 		System.out.println("= Starting Process Rich Adult Test Case. =");
 		System.out.println("==========================================");
-		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("customer.evaluation", params);
 		ksession.insert(processInstance);
 		ksession.fireAllRules();
 				
@@ -138,9 +139,6 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 	public void emptyRequestCustomerEvaluationTest() {
 		KieSession ksession = runtime.getKieSession();
 		
-		// optional: setup logging.
-		//KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationEmptyRequest", 1000);
-
 		// Map to be passed to the startProcess is intentionally empty.
 		Map<String, Object> params = new HashMap<String, Object>();
 		
@@ -148,7 +146,8 @@ public class CustomerEvaluationTest extends JbpmJUnitBaseTestCase {
 		System.out.println("=============================================");
 		System.out.println("= Starting Process Empty Request Test Case. =");
 		System.out.println("=============================================");
-		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("org.jbpm.customer-evaluation", params);
+
+		WorkflowProcessInstance processInstance = (WorkflowProcessInstance) ksession.startProcess("customer.evaluation", params);
 		ksession.insert(processInstance);
 		ksession.fireAllRules();
 				
