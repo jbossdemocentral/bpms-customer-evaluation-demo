@@ -105,17 +105,6 @@ chmod u+x $JBOSS_HOME/bin/standalone.sh
 echo "You can now start the $PRODUCT with $SERVER_BIN/standalone.sh"
 echo
 
-# TODO: develope this for pre loading instances to fill bam tables.
-#
-#echo "PRE-LOAD DEMO"
-#echo "==============="
-#echo "To load the BPM with a set of process instances, you can run the following command"
-#echo "after you start JBoss BPM Suite, build and deploy the BPM project, then you can"
-#echo "use the helper jar file found in the support directory as follows:"
-#echo 
-#echo "   java -jar jboss-demo-client.jar erics bpmsuite" 
-#echo
-
 echo "$PRODUCT $VERSION $DEMO Setup Complete."
 echo
 
