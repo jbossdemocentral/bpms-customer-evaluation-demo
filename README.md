@@ -17,26 +17,28 @@ Quickstart
 
 4. Login to http://localhost:8080/business-central  (u:erics / p:bpmsuite).
 
-5. Enjoy JBoss BPM Suite!
+5. Read the documentation found in the docs directory & enjoy JBoss BPM Suite!
 
-The project is NOT installed into the JBoss BPM Suite GUI, this is a JBoss
-Developer Studio developer based demo. It shows how a project looks, feels,
-and can be unit tested as a developer would work with this type of project.
 
-6. Install JBoss Developer Studio (JBDS) if needed from Customer Portal.
+Notes
+-----
 
-7. Import a new maven project in JBDS, select projects/customer-evaluation-demo directory.
+This project is pre-loaded into the JBoss BPM Suite, after starting it you can login,
+examine the rule, process, and data model from within the various product components.
+You can then build and deploy the project, thereby generating the kjar maven artifact 
+that the developer team needs to begin working on any application using this projects
+knowledge artifacts.
 
-8. Examine the project files; a model, a rule file, a bpmn2 process file, and the unit test file.
-
-9. Run unit test, see output in console and JUnit tab.
-
-10. Can also run 'mvn test' in projects/customer-evaluation-demo directory to see unit tests (4x).
+Once you setup the project in JBoss Developer Studio (see the docs), you can use maven 
+to pull in the kjar dependency, then examine the unit tests to discover how an application
+can interact with a knowledge project (rules, processes, and model).
 
 Released versions
 -----------------
 
 See the tagged releases for the following versions of the product:
+
+- v0.3 with JBoss EAP 6.1, JBoss BPM Suite 6.0.0.ER5, migrated JBDS project from BRMS 5.3, and full documentation.
 
 - v0.2 with JBoss EAP 6.1, JBoss BPM Suite 6.0.0.ER5, and migrated JBDS project from BRMS 5.3.
 
