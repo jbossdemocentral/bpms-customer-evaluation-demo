@@ -1,7 +1,7 @@
 #!/bin/sh 
 DEMO="Customer Evaluation Demo"
 AUTHORS="Eric D. Schabell"
-PROJECT="git@github.com:eschabell/brms-customer-evaluation-demo.git"
+PROJECT="git@github.com:eschabell/bpms-customer-evaluation-demo.git"
 PRODUCT="JBoss BPM Suite"
 JBOSS_HOME=./target/jboss-eap-6.1
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
@@ -9,33 +9,33 @@ SERVER_CONF=$JBOSS_HOME/standalone/configuration/
 SERVER_BIN=$JBOSS_HOME/bin
 SRC_DIR=./installs
 SUPPORT_DIR=./support
-PRJ_DIR=./projects/customer-evaluation-demo
+PRJ_DIR=./projects/bpms-generic-loan
 EAP=jboss-eap-6.1.1.zip
-BPMS=jboss-bpms-6.0.0.Beta-redhat-5-deployable-eap6.x.zip
-VERSION=6.0.0.Beta
+BPMS=jboss-bpms-6.0.0.GA-redhat-1-deployable-eap6.x.zip
+VERSION=6.0.0.CR1
 
 # wipe screen.
 clear 
 
 echo
-echo "##################################################################"
-echo "##                                                              ##"   
-echo "##  Setting up the ${DEMO}                     ##"
-echo "##                                                              ##"   
-echo "##                                                              ##"   
-echo "##     ####  ####   #   #      ### #   # ##### ##### #####      ##"
-echo "##     #   # #   # # # # #    #    #   #   #     #   #          ##"
-echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###        ##"
-echo "##     #   # #     #     #       # #   #   #     #   #          ##"
-echo "##     ####  #     #     #    ###  ##### #####   #   #####      ##"
-echo "##                                                              ##"   
-echo "##                                                              ##"   
-echo "##  brought to you by,                                          ##"   
-echo "##             ${AUTHORS}                                 ##"
-echo "##                                                              ##"   
-echo "##  ${PROJECT}  ##"
-echo "##                                                              ##"   
-echo "##################################################################"
+echo "#################################################################"
+echo "##                                                             ##"   
+echo "##  Setting up the ${DEMO}                    ##"
+echo "##                                                             ##"   
+echo "##                                                             ##"   
+echo "##     ####  ####   #   #      ### #   # ##### ##### #####     ##"
+echo "##     #   # #   # # # # #    #    #   #   #     #   #         ##"
+echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###       ##"
+echo "##     #   # #     #     #       # #   #   #     #   #         ##"
+echo "##     ####  #     #     #    ###  ##### #####   #   #####     ##"
+echo "##                                                             ##"   
+echo "##                                                             ##"   
+echo "##  brought to you by,                                         ##"   
+echo "##   ${AUTHORS}                                          ##"
+echo "##                                                             ##"   
+echo "##  ${PROJECT} ##"
+echo "##                                                             ##"   
+echo "#################################################################"
 echo
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
@@ -89,9 +89,14 @@ echo "  - enabling demo accounts role setup in application-roles.properties file
 echo
 cp $SUPPORT_DIR/application-roles.properties $SERVER_CONF
 
+echo "  - enabling management accounts login setup in mgmt-users.properties file..."
+echo
+cp $SUPPORT_DIR/mgmt-users.properties $SERVER_CONF
+
 echo "  - setting up demo projects..."
 echo
 cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
+cp -r $SUPPORT_DIR/bpm-suite-demo-index $SERVER_BIN/.index
 
 echo "  - setting up mock bpm dashboard data..."
 echo
@@ -101,10 +106,13 @@ echo "  - setting up standalone.xml configuration adjustments..."
 echo
 cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
 
-# Add execute permissions to the standalone.sh script.
 echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
+
+echo "  - turn off security profile for performance in standalone.conf..."
+echo
+sed -i '' 's/JAVA_OPTS="$JAVA_OPTS -Djava.security.manager/#JAVA_OPTS="$JAVA_OPTS -Djava.security.manager/g' $JBOSS_HOME/bin/standalone.conf
 
 echo "You can now start the $PRODUCT with $SERVER_BIN/standalone.sh"
 echo
