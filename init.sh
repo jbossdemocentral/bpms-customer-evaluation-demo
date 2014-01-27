@@ -11,8 +11,8 @@ SRC_DIR=./installs
 SUPPORT_DIR=./support
 PRJ_DIR=./projects/bpms-generic-loan
 EAP=jboss-eap-6.1.1.zip
-BPMS=jboss-bpms-6.0.0.GA-redhat-1-deployable-eap6.x.zip
-VERSION=6.0.0.CR1
+BPMS=jboss-bpms-6.0.0.GA-redhat-2-deployable-eap6.x.zip
+VERSION=6.0.0.CR2
 
 # wipe screen.
 clear 
@@ -98,10 +98,6 @@ echo
 cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
 cp -r $SUPPORT_DIR/bpm-suite-demo-index $SERVER_BIN/.index
 
-echo "  - setting up mock bpm dashboard data..."
-echo
-cp $SUPPORT_DIR/1000_jbpm_demo_h2.sql $SERVER_DIR/dashbuilder.war/WEB-INF/etc/sql
-
 echo "  - setting up standalone.xml configuration adjustments..."
 echo
 cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
@@ -110,9 +106,27 @@ echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
 
-echo "  - turn off security profile for performance in standalone.conf..."
+echo "  - temp fix for persisitence bug: https://bugzilla.redhat.com/show_bug.cgi?id=1055122 ..."
 echo
-sed -i '' 's/JAVA_OPTS="$JAVA_OPTS -Djava.security.manager/#JAVA_OPTS="$JAVA_OPTS -Djava.security.manager/g' $JBOSS_HOME/bin/standalone.conf
+cp -r $SUPPORT_DIR/persistence.xml $SERVER_DIR/business-central.war/WEB-INF/classes/META-INF/persistence.xml
+
+echo "OPTIONAL:"
+echo "========="
+echo "You can add mock data to your BPM Suite demo, which will populate the various BAM views"
+echo "and Process & Task views with fake process entries. These are not related to the demo itself"
+echo "but give you a feel as if using a larger installation where one would encounter many such"
+echo "entries when using the various dashboard components."
+echo 
+echo "Would you like to install mock data for the BPM Suite demo?"
+echo
+while true; do
+	read -p "Continue? [y/n]" yn
+	case $yn in
+		[Yy]* ) echo; echo "  - setting up mock bpm dashboard data..."; echo; cp $SUPPORT_DIR/1000_jbpm_demo_h2.sql $SERVER_DIR/dashbuilder.war/WEB-INF/etc/sql; break ;;
+		[Nn]* ) echo; echo "  - proceeding WITHOUT installing mock data..."; echo; break ;;
+		* ) echo "Please answer yes or no." ;;
+	esac
+done
 
 echo "You can now start the $PRODUCT with $SERVER_BIN/standalone.sh"
 echo

@@ -14,8 +14,8 @@ set SRC_DIR=%PROJECT_HOME%\installs
 set SUPPORT_DIR=%PROJECT_HOME%\support
 set PRJ_DIR=%PROJECT_HOME%\projects\bpms-generic-loan
 set EAP=jboss-eap-6.1.1.zip
-set BPMS=jboss-bpms-6.0.0.GA-redhat-1-deployable-eap6.x.zip
-set VERSION=6.0.0.CR1
+set BPMS=jboss-bpms-6.0.0.GA-redhat-2-deployable-eap6.x.zip
+set VERSION=6.0.0.CR2
 
 REM wipe screen.
 cls
@@ -118,10 +118,12 @@ mkdir "%SERVER_BIN%\.index\"
 xcopy /Y /Q /S "%SUPPORT_DIR%\bpm-suite-demo-index\*" "%SERVER_BIN%\.index\"
 echo. 
 
-echo - setting up mock bpm dashboard data...
-echo.
-xcopy /Y /Q "%SUPPORT_DIR%\1000_jbpm_demo_h2.sql" "%SERVER_DIR%\dashbuilder.war\WEB-INF\etc\sql"
-echo. 
+REM Optional: uncomment to make use of the mock data.
+REM
+REM echo - setting up mock bpm dashboard data...
+REM echo.
+REM xcopy /Y /Q "%SUPPORT_DIR%\1000_jbpm_demo_h2.sql" "%SERVER_DIR%\dashbuilder.war\WEB-INF\etc\sql"
+REM echo. 
 
 echo - turn off security profile for performance in standalone.conf... 
 echo.
