@@ -11,14 +11,16 @@ Quickstart
 
 3. Run 'init.sh'.
 
-4. Login to http://localhost:8080/business-central  (u:erics / p:bpmsuite).
+4. Start JBoss BPMS Server by running 'standalone.sh' or 'standalone.bat' in the <path-to-project>/target/jboss-eap-6.1/bin directory.
 
-5. Customer Evaluation demo pre-installed as project.
+5. Login to http://localhost:8080/business-central  (u:erics / p:bpmsuite).
 
-6. Process and Task dashboard pre-filled with mock data optional now. For Windows intaller, to add just uncomment install scripts
+6. Customer Evaluation demo pre-installed as project.
+
+7. Process and Task dashboard pre-filled with mock data optional now. For Windows intaller, to add just uncomment install scripts
 	 (see inline script comments).
 
-7. Read the documentation found in the docs directory & enjoy JBoss BPM Suite!
+8. Read the documentation found in the docs directory & enjoy JBoss BPM Suite!
 
 
 Notes
@@ -40,19 +42,21 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
-- v0.7 - with JBoss EAP 6.1.1, JBoss BPM Suite 6.0.0.CR2, and migrated JBDS project from BRMS 5.3.
+- v0.8 - JBoss BPM Suite 6.0.0.GA, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 
-- v0.6 - with JBoss EAP 6.1.1, JBoss BPM Suite 6.0.0.CR1, and migrated JBDS project from BRMS 5.3.
+- v0.7 - JBoss BPM Suite 6.0.0.CR2, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 
-- v0.5 with JBoss EAP 6.1.1, JBoss BPM Suite 6.0.0.Beta, mock data populated in Process and Task dashboard, and migrated JBDS project from BRMS 5.3.
+- v0.6 - JBoss BPM Suite 6.0.0.CR1, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 
-- v0.4 with JBoss EAP 6.1.1, JBoss BPM Suite 6.0.0.Beta, migrated JBDS project from BRMS 5.3.
+- v0.5 - JBoss BPM Suite 6.0.0.Beta, JBoss EAP 6.1.1, mock data populated in Process and Task dashboard, and migrated JBDS project from BRMS 5.3.
 
-- v0.3 with JBoss EAP 6.1, JBoss BPM Suite 6.0.0.ER5, migrated JBDS project from BRMS 5.3, and full documentation.
+- v0.4 - JBoss BPM Suite 6.0.0.Beta, JBoss EAP 6.1.1, migrated JBDS project from BRMS 5.3.
 
-- v0.2 with JBoss EAP 6.1, JBoss BPM Suite 6.0.0.ER5, and migrated JBDS project from BRMS 5.3.
+- v0.3 - JBoss BPM Suite 6.0.0.ER5, JBoss EAP 6.1, migrated JBDS project from BRMS 5.3, and full documentation.
 
-- v0.1 with JBoss EAP 6.1, JBoss BPM Suite 6.0.0.Beta1, and migrated JBDS project from BRMS 5.3.
+- v0.2 - JBoss BPM Suite 6.0.0.ER5, JBoss EAP 6.1, and migrated JBDS project from BRMS 5.3.
+
+- v0.1 - JBoss BPM Suite 6.0.0.Beta1, JBoss EAP 6.1, and migrated JBDS project from BRMS 5.3.
 
 
 ![Install Console](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/install-console.png?raw=true)
