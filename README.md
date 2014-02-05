@@ -42,7 +42,7 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
-- v0.8 - JBoss BPM Suite 6.0.0.GA, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
+- v1.0 - JBoss BPM Suite 6.0.0.GA, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 
 - v0.7 - JBoss BPM Suite 6.0.0.CR2, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 
