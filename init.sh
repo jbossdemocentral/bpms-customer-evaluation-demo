@@ -11,8 +11,8 @@ SRC_DIR=./installs
 SUPPORT_DIR=./support
 PRJ_DIR=./projects/bpms-generic-loan
 EAP=jboss-eap-6.1.1.zip
-BPMS=jboss-bpms-6.0.0.GA-redhat-2-deployable-eap6.x.zip
-VERSION=6.0.0.GA
+BPMS=jboss-bpms-6.0.1.GA-redhat-2-deployable-eap6.x.zip
+VERSION=6.0.1.GA
 
 # wipe screen.
 clear 
@@ -41,7 +41,7 @@ echo
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
 
 # make some checks first before proceeding.	
-if [[ -r $SRC_DIR/$EAP || -L $SRC_DIR/$EAP ]]; then
+if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
 		echo EAP sources are present...
 		echo
 else
@@ -105,23 +105,11 @@ echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
 
-echo "OPTIONAL:"
-echo "========="
-echo "You can add mock data to your BPM Suite demo, which will populate the various BAM views"
-echo "and Process & Task views with fake process entries. These are not related to the demo itself"
-echo "but give you a feel as if using a larger installation where one would encounter many such"
-echo "entries when using the various dashboard components."
-echo 
-echo "Would you like to install mock data for the BPM Suite demo?"
-echo
-while true; do
-	read -p "Continue? [y/n]" yn
-	case $yn in
-		[Yy]* ) echo; echo "  - setting up mock bpm dashboard data..."; echo; cp $SUPPORT_DIR/1000_jbpm_demo_h2.sql $SERVER_DIR/dashbuilder.war/WEB-INF/etc/sql; break ;;
-		[Nn]* ) echo; echo "  - proceeding WITHOUT installing mock data..."; echo; break ;;
-		* ) echo "Please answer yes or no." ;;
-	esac
-done
+# Optional: uncomment this to install mock data for BPM Suite.
+#
+#echo - setting up mock bpm dashboard data...
+#cp $SUPPORT_DIR/1000_jbpm_demo_h2.sql $SERVER_DIR/dashbuilder.war/WEB-INF/etc/sql
+#echo
 
 echo "You can now start the $PRODUCT with $SERVER_BIN/standalone.sh"
 echo
