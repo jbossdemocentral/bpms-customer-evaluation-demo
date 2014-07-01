@@ -63,8 +63,6 @@ See the tagged releases for the following versions of the product:
 - v0.1 - JBoss BPM Suite 6.0.0.Beta1, JBoss EAP 6.1, and migrated JBDS project from BRMS 5.3.
 
 
-![Install Console](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/install-console.png?raw=true)
-
 ![Process](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/process.png?raw=true)
 
 ![Process & Task Dashboard](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/mock-bpm-data.png?raw=true)
