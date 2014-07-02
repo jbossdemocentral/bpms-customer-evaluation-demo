@@ -37,6 +37,11 @@ to pull in the kjar dependency, then examine the unit tests to discover how an a
 can interact with a knowledge project (rules, processes, and model).
 
 
+Supporting Articles
+-------------------
+[Red Hat JBoss BPM Suite - all product demos updated for version 6.0.2.GA release](http://www.schabell.org/2014/07/redhat-jboss-bpmsuite-product-demos-6.0.2-updated.html)
+
+
 Released versions
 -----------------
 
