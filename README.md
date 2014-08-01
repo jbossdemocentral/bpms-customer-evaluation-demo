@@ -5,7 +5,7 @@ JBoss BPM Suite Customer Evaluation Demo
 Quickstart
 ----------
 
-1. Clone project.
+1. [Download and unzip.](https://github.com/eschabell/bpms-customer-evaluation-demo/archive/master.zip)
 
 2. Add products to installs directory.
 
@@ -13,7 +13,7 @@ Quickstart
 
 4. Start JBoss BPMS Server by running 'standalone.sh' or 'standalone.bat' in the <path-to-project>/target/jboss-eap-6.1/bin directory.
 
-5. Login to http://localhost:8080/business-central  (u:erics / p:bpmsuite).
+5. Login to http://localhost:8080/business-central  (u:erics / p:bpmsuite1!).
 
 6. Customer Evaluation demo pre-installed as project.
 
@@ -46,6 +46,8 @@ Released versions
 -----------------
 
 See the tagged releases for the following versions of the product:
+
+- v1.3 - JBoss BPM Suite 6.0.2 installer used, with cutomer evalutation demo installed.
 
 - v1.2 - JBoss BPM Suite 6.0.2, JBoss EAP 6.1.1, and migrated JBDS project from BRMS 5.3.
 

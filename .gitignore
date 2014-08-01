@@ -5,6 +5,7 @@ RemoteSystemsTempFiles/
 .index/
 .niogit/
 *.zip
+*.jar
 .classpath
 .project
 .settings/
