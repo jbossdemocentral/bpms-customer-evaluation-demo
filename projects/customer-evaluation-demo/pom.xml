@@ -9,14 +9,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <bpm-suite-version>6.0.0-redhat-5</bpm-suite-version>
+        <bpm-suite-version>6.0.3-redhat-4</bpm-suite-version>
     </properties>
 
     <repositories>
       <repository>
-				<id>soa-brms-6-build</id>
-				<name>JBoss SOA BRMS 6 Build Repository</name>
-				<url>http://download.devel.redhat.com/brewroot/repos/soa-brms-6-build/latest/maven/</url>
+				<id>jboss-maven-repository</id>
+				<name>JBoss Maven Repository</name>
+				<url>http://maven.repository.redhat.com/techpreview/all/</url>
 				<layout>default</layout>
 				<releases>  
 					<enabled>true</enabled>  
@@ -44,7 +44,7 @@
             <scope>test</scope>
         </dependency>
 
-				<!-- Backwards comaptible BRMS 5 API -->
+				<!-- Backwards compatible BRMS 5 API -->
         <dependency>
         	<groupId>org.drools</groupId>
         	<artifactId>knowledge-api</artifactId>
