@@ -5,7 +5,7 @@ JBoss BPM Suite Customer Evaluation Demo
 Quickstart
 ----------
 
-1. [Download and unzip.](https://github.com/eschabell/bpms-customer-evaluation-demo/archive/master.zip)
+1. [Download and unzip.](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/archive/master.zip)
 
 2. Add products to installs directory.
 
@@ -47,6 +47,8 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
+- v1.4 - moved to JBoss Demo Central.
+
 - v1.4 - JBoss BPM Suite 6.0.3 installer with cutomer evalutation demo installed.
 
 - v1.3 - JBoss BPM Suite 6.0.2 installer used, with cutomer evalutation demo installed.
@@ -72,7 +74,7 @@ See the tagged releases for the following versions of the product:
 - v0.1 - JBoss BPM Suite 6.0.0.Beta1, JBoss EAP 6.1, and migrated JBDS project from BRMS 5.3.
 
 
-![Process](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/process.png?raw=true)
+![Process](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/blob/master/docs/demo-images/process.png?raw=true)
 
-![Process & Task Dashboard](https://github.com/eschabell/bpms-customer-evaluation-demo/blob/master/docs/demo-images/mock-bpm-data.png?raw=true)
+![Process & Task Dashboard](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/blob/master/docs/demo-images/mock-bpm-data.png?raw=true)
 

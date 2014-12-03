@@ -1,7 +1,7 @@
 #!/bin/sh 
 DEMO="Customer Evaluation Demo"
 AUTHORS="Eric D. Schabell"
-PROJECT="git@github.com:eschabell/bpms-customer-evaluation-demo.git"
+PROJECT="git@github.com:jbossdemocentral/bpms-customer-evaluation-demo.git"
 PRODUCT="JBoss BPM Suite"
 JBOSS_HOME=./target/jboss-eap-6.1
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
@@ -17,24 +17,24 @@ VERSION=6.0.3
 clear 
 
 echo
-echo "#################################################################"
-echo "##                                                             ##"   
-echo "##  Setting up the ${DEMO}                    ##"
-echo "##                                                             ##"   
-echo "##                                                             ##"   
-echo "##     ####  ####   #   #      ### #   # ##### ##### #####     ##"
-echo "##     #   # #   # # # # #    #    #   #   #     #   #         ##"
-echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###       ##"
-echo "##     #   # #     #     #       # #   #   #     #   #         ##"
-echo "##     ####  #     #     #    ###  ##### #####   #   #####     ##"
-echo "##                                                             ##"   
-echo "##                                                             ##"   
-echo "##  brought to you by,                                         ##"   
-echo "##   ${AUTHORS}                                          ##"
-echo "##                                                             ##"   
+echo "########################################################################"
+echo "##                                                                    ##"   
+echo "##  Setting up the ${DEMO}                           ##"
+echo "##                                                                    ##"   
+echo "##                                                                    ##"   
+echo "##     ####  ####   #   #      ### #   # ##### ##### #####            ##"
+echo "##     #   # #   # # # # #    #    #   #   #     #   #                ##"
+echo "##     ####  ####  #  #  #     ##  #   #   #     #   ###              ##"
+echo "##     #   # #     #     #       # #   #   #     #   #                ##"
+echo "##     ####  #     #     #    ###  ##### #####   #   #####            ##"
+echo "##                                                                    ##"   
+echo "##                                                                    ##"   
+echo "##  brought to you by,                                                ##"   
+echo "##   ${AUTHORS}                                                 ##"
+echo "##                                                                    ##"   
 echo "##  ${PROJECT} ##"
-echo "##                                                             ##"   
-echo "#################################################################"
+echo "##                                                                    ##"   
+echo "########################################################################"
 echo
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
