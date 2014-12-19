@@ -1,10 +1,30 @@
 JBoss BPM Suite Customer Evaluation Demo
 ========================================
+The customer evaluation project demonstrates the BPM Suite process integration with rules.
+It is a straight through process (STP).
 
 
-Quickstart
-----------
+Install with one click in xPaaS (bpmPaaS)
+-----------------------------------------
+After clicking button, ensure `Gear` size is set to `medium`:
 
+[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Click to  install.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS-customer-evaluation-demo/master/metadata/manifest.yml&name=customerevaluation&gear_profile=medium&initial_git_url=)
+
+Once installed you can use the JBoss BPM Suite login: 
+
+   * u:erics   p: bpmsuite  (admin)
+
+   * u: alan   p: bpmsuite  (analyst)
+
+   * u: daniel p: bpmsuite (developer)
+
+   * u: ursla  p: bpmsuite (user)
+
+   * u: mary   p: bpmsuite (manager)
+
+
+Install on your machine
+-----------------------
 1. [Download and unzip.](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/archive/master.zip)
 
 2. Add products to installs directory.
@@ -47,7 +67,7 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
-- v1.5 - moved to JBoss Demo Central, updated windows init.bat support.
+- v1.5 - moved to JBoss Demo Central, updated windows init.bat support and one click install button.
 
 - v1.4 - JBoss BPM Suite 6.0.3 installer with cutomer evalutation demo installed.
 
