@@ -3,28 +3,11 @@ JBoss BPM Suite Customer Evaluation Demo
 The customer evaluation project demonstrates the BPM Suite process integration with rules.
 It is a straight through process (STP).
 
-
-Install with one click in xPaaS (bpmPaaS)
------------------------------------------
-After clicking button, ensure `Gear` size is set to `medium`:
-
-[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Install bpmPaaS.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS-customer-evaluation-demo/master/metadata/manifest.yml&name=customerevaluation&gear_profile=medium&initial_git_url=)
-
-Once installed you can use the JBoss BPM Suite login: 
-
-   * u:erics   p: bpmsuite  (admin)
-
-   * u: alan   p: bpmsuite  (analyst)
-
-   * u: daniel p: bpmsuite (developer)
-
-   * u: ursla  p: bpmsuite (user)
-
-   * u: mary   p: bpmsuite (manager)
+There are three options available to you for using this demo; local, Openshift and Docker.
 
 
-Install on your machine
------------------------
+Option 1 - Install on your machine
+----------------------------------
 1. [Download and unzip.](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/archive/master.zip)
 
 2. Add products to installs directory.
@@ -42,9 +25,28 @@ Install on your machine
 
 8. Read the documentation found in the docs directory & enjoy JBoss BPM Suite!
 
-Optional Docker Install
------------------------
 
+Option 2 - Install with one click in xPaaS (bpmPaaS)
+----------------------------------------------------
+After clicking button, ensure `Gear` size is set to `medium`:
+
+[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Install bpmPaaS.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS-customer-evaluation-demo/master/metadata/manifest.yml&name=customerevaluation&gear_profile=medium&initial_git_url=)
+
+Once installed you can use the JBoss BPM Suite login: 
+
+   * u:erics   p: bpmsuite  (admin)
+
+   * u: alan   p: bpmsuite  (analyst)
+
+   * u: daniel p: bpmsuite (developer)
+
+   * u: ursla  p: bpmsuite (user)
+
+   * u: mary   p: bpmsuite (manager)
+
+
+Option2 - Generate docker install
+---------------------------------
 The following steps can be used to configure and run the demo in a docker container
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/bpms-customer-evaluation-demo/archive/master.zip)
@@ -74,7 +76,6 @@ Additional information can be found in the jbossdemocentral docker [developer re
 
 Notes
 -----
-
 This project is pre-loaded into the JBoss BPM Suite, after starting it you can login,
 examine the rule, process, and data model from within the various product components.
 You can then build and deploy the project, thereby generating the kjar maven artifact 
@@ -88,12 +89,13 @@ can interact with a knowledge project (rules, processes, and model).
 
 Supporting Articles
 -------------------
+[3 shockingly easy ways into JBoss rules, events, planning & BPM](http://www.schabell.org/2015/01/3-shockingly-easy-ways-into-jboss-brms-bpmsuite.html)
+
 [Red Hat JBoss BPM Suite - all product demos updated for version 6.0.2.GA release](http://www.schabell.org/2014/07/redhat-jboss-bpmsuite-product-demos-6.0.2-updated.html)
 
 
 Released versions
 -----------------
-
 See the tagged releases for the following versions of the product:
 
 - v1.6 - JBoss BPM Suite 6.0.3 installer with optional docker installation.
