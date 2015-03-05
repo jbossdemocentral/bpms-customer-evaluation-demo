@@ -14,7 +14,7 @@ Install options - local, OpenShift and Docker.",
   "links": [ 
     { 
       "name":"Code",
-      "url":"https://github.com/jbossdemocentral/bpms-cusotmer-evaluation-demo"
+      "url":"https://github.com/jbossdemocentral/bpms-customer-evaluation-demo"
     },
     { 
       "name":"Install bpmPaaS",
