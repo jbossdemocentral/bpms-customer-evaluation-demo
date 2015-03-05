@@ -1,6 +1,6 @@
 {
   "name":"JBoss BPM Suite Customer Evaluation Demo",
-  "summary":"The customer evaluation project demonstrates the BPM Suite process integration with rules and isa straight through process (STP). 
+  "summary":"The customer evaluation project demonstrates the BPM Suite process integration with rules and is a straight through process (STP). 
 
 Install options - local, OpenShift and Docker.",
   "author":"Andrew Block, Eric D. Schabell",
