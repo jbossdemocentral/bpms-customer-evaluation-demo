@@ -3,7 +3,7 @@ JBoss BPM Suite Customer Evaluation Demo
 The customer evaluation project demonstrates the BPM Suite process integration with rules.
 It is a straight through process (STP).
 
-There are three options available to you for using this demo; local, Openshift and Docker.
+There are three options available to you for using this demo; local, Openshift and containerized.
 
 
 Option 1 - Install on your machine
@@ -108,7 +108,7 @@ See the tagged releases for the following versions of the product:
 
 - v1.7 - JBoss BPM Suite 6.1 with customer evaluation demo installed.
 
-- v1.6 - JBoss BPM Suite 6.0.3 installer with optional docker installation.
+- v1.6 - JBoss BPM Suite 6.0.3 installer with optional containerized installation.
 
 - v1.5 - moved to JBoss Demo Central, updated windows init.bat support and one click install button.
 
