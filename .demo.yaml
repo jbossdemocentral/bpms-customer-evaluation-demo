@@ -5,6 +5,6 @@ technologies:
   - JBoss EAP
   - JBoss BPM Suite
 summary: The customer evaluation project demonstrates the BPM Suite process integration with rules. It is a straight through process (STP). There are three options available to you for using this demo; local, Openshift and containerized.
-level: Intermediate
+level: Beginner
 product: bpmsuite
 author: Andrew Block, Eric D. Schabell
