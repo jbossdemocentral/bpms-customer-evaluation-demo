@@ -1,5 +1,5 @@
 id: jbossdemocentral-bpms-customer-evaluation
-title: The customer evaluation project demonstrates the BPM Suite process integration with rules.
+title: JBoss BPM Suite Customer Evaluation Demo
 github_repo_url: https://github.com/jbossdemocentral/bpms-customer-evaluation-demo
 technologies:
   - JBoss EAP
