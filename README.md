@@ -108,6 +108,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v1.8 - JBoss BPM Suite 6.2.0, JBoss EAP 6.4.4 with customer evaluation demo installed.
+
 - v1.7 - JBoss BPM Suite 6.1 with customer evaluation demo installed.
 
 - v1.6 - JBoss BPM Suite 6.0.3 installer with optional containerized installation.

@@ -9,7 +9,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <bpm-suite-version>6.0.3-redhat-4</bpm-suite-version>
+        <bpm-suite-version>6.3.0.Final-redhat-5</bpm-suite-version>
     </properties>
 
     <repositories>
